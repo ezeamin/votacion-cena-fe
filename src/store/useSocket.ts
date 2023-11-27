@@ -11,8 +11,15 @@ interface SocketStore {
   onSocket: (event: string, callback: (msg: string) => void) => void;
 }
 
+const token = localStorage.getItem('token') || crypto.randomUUID();
+localStorage.setItem('token', token);
+
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
-const socket = io(SOCKET_URL);
+const socket = io(SOCKET_URL, {
+  auth: {
+    token,
+  },
+});
 
 export const useSocket = create<SocketStore>((set) => ({
   socket,
