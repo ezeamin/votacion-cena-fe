@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpx tsx ./config/pre-build.ts --mode development",
+    "build": "vite build",
     "lint": "pnpx tsx ./config/pre-build.ts --ignore-build",
     "preview": "vite preview",
     "prepare": "pnpm i tsx -g --ignore-scripts && pnpx tsx ./config/prepare-project.ts",
