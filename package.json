@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "pnpx tsx ./config/pre-build.ts --ignore-build",
     "preview": "vite preview",
-    "prepare": "pnpm i tsx -g --ignore-scripts && pnpx tsx ./config/prepare-project.ts",
+    "install-deps": "pnpm i tsx -g --ignore-scripts && pnpx tsx ./config/prepare-project.ts",
     "prettier:check": "npx prettier -c .",
     "prettier:write": "npx prettier -w ."
   },
