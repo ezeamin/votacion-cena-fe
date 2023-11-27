@@ -1,7 +1,6 @@
-import { create } from 'zustand';
 import { io } from 'socket.io-client';
-
 import type { Socket } from 'socket.io-client';
+import { create } from 'zustand';
 
 // TODO: Take this store to a hook, and wrap onSocket in useEffect
 
@@ -17,7 +16,7 @@ const socket = io(SOCKET_URL);
 
 export const useSocket = create<SocketStore>((set) => ({
   socket,
-  setSocket: (socket) => set({ socket }),
+  setSocket: (_socket) => set({ socket: _socket }),
   emitSocket: (event, data) => socket.emit(event, data),
   onSocket: (event, callback) => socket.on(event, callback),
 }));

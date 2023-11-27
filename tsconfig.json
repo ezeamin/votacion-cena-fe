@@ -29,7 +29,7 @@
     "./vite.config.ts",
     "./config/pre-build.ts",
     "./config/prepare-project.ts",
-    "commitlint.config.ts"
+    "./commitlint.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

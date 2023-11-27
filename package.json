@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "lint": "npx tsx ./config/pre-build.ts --ignore-build",
-    "preview": "vite preview"
+    "build": "pnpx tsx ./config/pre-build.ts --mode development",
+    "lint": "pnpx tsx ./config/pre-build.ts --ignore-build",
+    "preview": "vite preview",
+    "prepare": "pnpm i tsx -g --ignore-scripts && pnpx tsx ./config/prepare-project.ts",
+    "prettier:check": "npx prettier -c .",
+    "prettier:write": "npx prettier -w ."
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

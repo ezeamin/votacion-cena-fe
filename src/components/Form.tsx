@@ -1,27 +1,28 @@
-import { useRef } from 'react';
-import { useSocket } from '../store/useSocket';
+// import { useRef } from 'react';
 
-const Form = () => {
-  const { emitSocket } = useSocket();
+// import { useSocket } from '../store/useSocket';
 
-  const inputRef = useRef<HTMLInputElement>(null);
+// const Form = () => {
+//   const { emitSocket } = useSocket();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+//   const inputRef = useRef<HTMLInputElement>(null);
 
-    const message = inputRef.current?.value;
+//   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+//     e.preventDefault();
 
-    if (message) {
-      emitSocket('new vote', message);
-      inputRef.current!.value = '';
-    }
-  };
+//     const message = inputRef.current?.value;
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type='text' ref={inputRef} />
-      <button type='submit'>Enviar</button>
-    </form>
-  );
-};
-export default Form;
+//     if (message) {
+//       emitSocket('new vote', message);
+//       inputRef.current!.value = '';
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input type="text" ref={inputRef} />
+//       <button type="submit">Enviar</button>
+//     </form>
+//   );
+// };
+// export default Form;

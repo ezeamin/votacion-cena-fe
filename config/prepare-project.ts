@@ -17,7 +17,7 @@ const runPrepareScript = () => {
     // Install global dependencies
     process.stdout.write('⌛ (2/3) Installing global dependencies...');
     execSync(
-      'npm install npm-check-updates typescript prettier eslint @trivago/prettier-plugin-sort-imports -g --ignore-scripts --silent'
+      'pnpm install npm-check-updates typescript prettier eslint -g --ignore-scripts --silent'
     );
     process.stdout.clearLine(0);
     process.stdout.cursorTo(0);
