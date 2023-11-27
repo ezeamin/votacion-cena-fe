@@ -1,5 +1,7 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
 
+import { Toaster } from 'sonner';
+
 import useTheme from './hooks/useTheme';
 
 import Router from './views/Router';
@@ -11,6 +13,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router />
+      <Toaster richColors />
     </ThemeProvider>
   );
 };

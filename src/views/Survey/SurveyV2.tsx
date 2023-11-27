@@ -7,7 +7,11 @@ const SurveyV2 = () => {
   return (
     <>
       <Title title="Elige una reina" />
-      <OfficesList view={2} data={people} />
+      <OfficesList
+        data={people}
+        message="Acá podes votar una compañera"
+        view={2}
+      />
     </>
   );
 };

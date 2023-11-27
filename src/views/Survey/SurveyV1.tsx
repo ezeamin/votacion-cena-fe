@@ -6,7 +6,11 @@ import Title from '@/components/Title';
 const SurveyV1 = () => (
   <>
     <Title title="Elige un rey" />
-    <OfficesList view={1} data={people} />
+    <OfficesList
+      data={people}
+      message="Acá poder votar por un compañero"
+      view={1}
+    />
   </>
 );
 

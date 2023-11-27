@@ -1,36 +1,59 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { Box, Divider, FormControl, RadioGroup } from '@mui/material';
+import {
+  Alert,
+  Box,
+  Button,
+  Divider,
+  FormControl,
+  RadioGroup,
+} from '@mui/material';
 
 import { useForm } from '@/store/useForm';
 import { useSocket } from '@/store/useSocket';
+import { toast } from 'sonner';
 
 import { OfficesListProps } from '../interface';
 import PersonItem from './PersonItem';
 
 const OfficesList = (props: OfficesListProps) => {
-  const { data, view } = props;
+  const { data, message, view } = props;
 
-  const { emitSocket } = useSocket();
+  // TODO: cambiar useForm por 
   const { king, setKing } = useForm();
 
   const navigate = useNavigate();
+
+  const { emitSocket, onSocket } = useSocket();
+
+  const [selectedPerson, setSelectedPerson] = useState();
+  console.log(
+    '👌👌 ~ file: OfficesList.tsx:30 ~ OfficesList ~ selectedPerson:',
+    selectedPerson
+  );
 
   const elements = Object.keys(data).map((key) => {
     return data[key];
   });
 
+  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
+    setSelectedPerson(e.target.value);
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // @ts-expect-error -- TODO: fix this
-    const selectedPerson = e.currentTarget.elements.position.value;
+    if (!selectedPerson) {
+      toast.error('Error: debe seleccionar un compañoro/a antes de continuar.');
+      return;
+    }
 
     if (view === 1) {
       setKing(selectedPerson);
       navigate('/step-2');
     } else {
+      console.log('😘😘😘😘😘')
       emitSocket('new vote', {
         king,
         queen: selectedPerson,
@@ -38,16 +61,29 @@ const OfficesList = (props: OfficesListProps) => {
     }
   };
 
+  useEffect(() => {
+    onSocket('error', (msg) => {
+      toast.error(msg);
+    });
+    onSocket('success', () => {
+      navigate('/preview-results');
+    });
+  }, [onSocket]);
+
   //   TODO: Manejar error en un useEffect, usando onSocket fn del store. Evento "error"
   //   TODO: Dentro del mismo useEffect, esperar exito. Evento "success"
 
   return (
     <form onSubmit={handleSubmit}>
+      <Alert severity="info" variant="outlined">
+        {message}
+      </Alert>
       <FormControl sx={{ width: '100%', my: 2 }}>
         <RadioGroup
           aria-labelledby="demo-form-control-label-placement"
-          name="position"
           defaultValue="top"
+          name="position"
+          onChange={handleChange}
         >
           {elements.map((element, index) => (
             <Fragment key={Object.keys(data)[index]}>
@@ -61,7 +97,10 @@ const OfficesList = (props: OfficesListProps) => {
           ))}
         </RadioGroup>
       </FormControl>
-      <button type="submit">send</button>
+
+      <Button fullWidth type="submit" variant="contained">
+        {view === 1 ? 'Siguiente paso' : 'Finalizar votación'}
+      </Button>
     </form>
   );
 };
