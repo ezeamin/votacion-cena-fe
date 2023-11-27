@@ -1,0 +1,8 @@
+{
+  "short_name": "Votacion cena",
+  "name": "Votacion cena",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#33333C",
+  "background_color": "#33333C"
+}

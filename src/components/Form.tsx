@@ -12,7 +12,7 @@ const Form = () => {
     const message = inputRef.current?.value;
 
     if (message) {
-      emitSocket('chat message', message);
+      emitSocket('new vote', message);
       inputRef.current!.value = '';
     }
   };
