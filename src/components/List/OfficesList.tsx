@@ -20,7 +20,7 @@ import PersonItem from './PersonItem';
 const OfficesList = (props: OfficesListProps) => {
   const { data, message, view } = props;
 
-  // TODO: cambiar useForm por 
+  // TODO: cambiar useForm por localStorage
   const { king, setKing } = useForm();
 
   const navigate = useNavigate();
