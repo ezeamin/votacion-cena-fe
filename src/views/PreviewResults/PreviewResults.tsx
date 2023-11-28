@@ -1,4 +1,6 @@
-import { Box, Link, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+import { Box, Typography } from '@mui/material';
 
 const PreviewResults = () => {
   return (
@@ -7,7 +9,7 @@ const PreviewResults = () => {
         Su voto fue registrado correctamente !
       </Typography>
       <Typography align="center" component="h2" mt={3} variant="h6">
-        <Link href="/results">VER LOS RESULTADOS</Link>
+        <Link to="/results">VER LOS RESULTADOS</Link>
       </Typography>
     </Box>
   );

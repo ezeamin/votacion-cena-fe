@@ -10,7 +10,6 @@ import {
   RadioGroup,
 } from '@mui/material';
 
-import { useForm } from '@/store/useForm';
 import { useSocket } from '@/store/useSocket';
 import { toast } from 'sonner';
 
@@ -20,18 +19,11 @@ import PersonItem from './PersonItem';
 const OfficesList = (props: OfficesListProps) => {
   const { data, message, view } = props;
 
-  // TODO: cambiar useForm por localStorage
-  const { king, setKing } = useForm();
-
   const navigate = useNavigate();
 
   const { emitSocket, onSocket } = useSocket();
 
   const [selectedPerson, setSelectedPerson] = useState();
-  console.log(
-    '👌👌 ~ file: OfficesList.tsx:30 ~ OfficesList ~ selectedPerson:',
-    selectedPerson
-  );
 
   const elements = Object.keys(data).map((key) => {
     return data[key];
@@ -50,12 +42,11 @@ const OfficesList = (props: OfficesListProps) => {
     }
 
     if (view === 1) {
-      setKing(selectedPerson);
+      localStorage.setItem('king', selectedPerson);
       navigate('/step-2');
     } else {
-      console.log('😘😘😘😘😘')
       emitSocket('new vote', {
-        king,
+        king: localStorage.getItem('king'),
         queen: selectedPerson,
       });
     }
@@ -69,9 +60,6 @@ const OfficesList = (props: OfficesListProps) => {
       navigate('/preview-results');
     });
   }, [onSocket]);
-
-  //   TODO: Manejar error en un useEffect, usando onSocket fn del store. Evento "error"
-  //   TODO: Dentro del mismo useEffect, esperar exito. Evento "success"
 
   return (
     <form onSubmit={handleSubmit}>
