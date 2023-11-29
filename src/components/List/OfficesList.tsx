@@ -42,7 +42,7 @@ const OfficesList = (props: OfficesListProps) => {
   //   return 0;
   // });
 
-  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (e: React.FormEvent<HTMLFormElement>): void => {
     setSelectedPerson(e.target.value);
   };
 
