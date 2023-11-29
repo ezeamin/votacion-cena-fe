@@ -1,4 +1,5 @@
-import people from '@/data/men.json';
+// import people from '@/data/men.json';
+import people from '@/data/rey.json';
 
 import OfficesList from '@/components/List/OfficesList';
 import Title from '@/components/Title';

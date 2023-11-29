@@ -29,6 +29,19 @@ const OfficesList = (props: OfficesListProps) => {
     return data[key];
   });
 
+  // const orderedElements = elements[0].sort((a, b) => {
+  //   const firstNameA = a.split(' ')[0].toUpperCase();
+  //   const firstNameB = b.split(' ')[0].toUpperCase();
+
+  //   if (firstNameA < firstNameB) {
+  //     return -1;
+  //   }
+  //   if (firstNameA > firstNameB) {
+  //     return 1;
+  //   }
+  //   return 0;
+  // });
+
   const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
     setSelectedPerson(e.target.value);
   };
@@ -75,7 +88,9 @@ const OfficesList = (props: OfficesListProps) => {
         >
           {elements.map((element, index) => (
             <Fragment key={Object.keys(data)[index]}>
-              <Divider>{Object.keys(data)[index].toUpperCase()}</Divider>
+              <Divider>
+                {Object.keys(data)[index].toUpperCase() || null}
+              </Divider>
               <Box component="ul" sx={{ mb: 3 }}>
                 {element.map((person) => (
                   <PersonItem person={person} key={person} />
