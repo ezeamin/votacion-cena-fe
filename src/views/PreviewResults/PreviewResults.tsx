@@ -1,26 +1,29 @@
 import { Link } from 'react-router-dom';
 
-import { Box, Button, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
 
 const PreviewResults = () => {
   return (
-    <Box sx={{ mt: '100%' }}>
-      <Typography align="center" component="h2" variant="h4">
+    <Stack
+      flexDirection="column"
+      justifyContent="space-evenly"
+      sx={{ height: '100vh' }}
+    >
+      <Typography component="h2" sx={{ mx: 6 }} textAlign="center" variant="h4">
         Su voto fue registrado correctamente !
       </Typography>
-      <Box textAlign="center">
-        <Button
-          color="violet"
-          size="large"
-          sx={{ mt: '25%' }}
-          variant="contained"
-        >
-          <Link style={{ color: '#fff', textDecoration: 'none' }} to="/results">
-            VER LOS RESULTADOS
-          </Link>
-        </Button>
-      </Box>
-    </Box>
+
+      <Button
+        color="violet"
+        component={Link}
+        size="large"
+        sx={{ color: '#fff', textDecoration: 'none' }}
+        to="/results"
+        variant="contained"
+      >
+        VER LOS RESULTADOS
+      </Button>
+    </Stack>
   );
 };
 
