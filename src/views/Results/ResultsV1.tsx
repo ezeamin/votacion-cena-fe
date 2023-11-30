@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Grid, Stack, Typography } from '@mui/material';
 
 import { useSocket } from '@/store/useSocket';
+import { toast } from 'sonner';
 
 import Graph from '@/components/Results/Graph';
 import NumberOfVotes from '@/components/Results/NumberOfVotes';
@@ -20,6 +21,12 @@ const ResultsV1 = () => {
   useEffect(() => {
     onSocket('votes', (apiData) => {
       setData(apiData as Vote[]);
+
+      setIsLoading(false);
+    });
+    onSocket('error', (msg) => {
+      if (typeof msg === 'string') toast.error(msg);
+      else if (msg instanceof Error) toast.error(msg.message);
 
       setIsLoading(false);
     });

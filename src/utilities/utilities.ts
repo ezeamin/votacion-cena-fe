@@ -10,13 +10,17 @@ export const findMostFrequentValue = (arr: string[]): string | undefined => {
   });
 
   // Find the string with the maximum count
-  const [mostFrequentValue] = Array.from(countMap.entries()).reduce(
-    ([currentValue, currentCount], [value, count]) =>
-      count > currentCount ? [value, count] : [currentValue, currentCount],
-    ['', 0]
-  );
+  const maxCount = Math.max(...countMap.values());
+  const mostFrequentValues = Array.from(countMap.entries())
+    .filter(([, count]) => count === maxCount)
+    .map(([value]) => value);
 
-  return mostFrequentValue !== '' ? mostFrequentValue : undefined;
+  // Check for a tie
+  if (mostFrequentValues.length > 1) {
+    return 'EMPATE';
+  }
+
+  return mostFrequentValues.length > 0 ? mostFrequentValues[0] : undefined;
 };
 
 export const countFrequency = (

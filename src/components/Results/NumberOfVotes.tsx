@@ -21,7 +21,6 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
         backgroundColor: '#7388A9',
         borderRadius: '1rem',
         padding: '2.5rem 1rem',
-        position: 'relative',
         height: '150px',
         maxHeight: '150px',
       }}

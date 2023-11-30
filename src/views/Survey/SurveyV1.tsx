@@ -6,7 +6,7 @@ import Title from '@/components/Title';
 
 const SurveyV1 = () => (
   <>
-    <Title title="Rey de la Cena 2023" />
+    <Title title="Rey de la Cena 2023" hideDivider />
     <OfficesList
       data={people}
       message="Acá podes votar por un compañero"

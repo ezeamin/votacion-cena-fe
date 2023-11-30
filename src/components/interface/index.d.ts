@@ -1,6 +1,7 @@
 export interface TitleProps {
   title: string;
   centered?: boolean;
+  hideDivider?: boolean;
 }
 
 export interface PeopleListProps {

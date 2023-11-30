@@ -3,7 +3,7 @@ import { Divider, Typography } from '@mui/material';
 import { TitleProps } from './interface';
 
 const Title = (props: TitleProps) => {
-  const { title, centered } = props;
+  const { title, centered, hideDivider = false } = props;
 
   return (
     <>
@@ -15,7 +15,7 @@ const Title = (props: TitleProps) => {
       >
         {title}
       </Typography>
-      <Divider />
+      {!hideDivider && <Divider />}
     </>
   );
 };

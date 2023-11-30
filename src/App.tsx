@@ -4,6 +4,7 @@ import { Toaster } from 'sonner';
 
 import useTheme from './hooks/useTheme';
 
+import LoadingBackdrop from './components/Loading/LoadingBackdrop';
 import Router from './views/Router';
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <CssBaseline />
       <Router />
       <Toaster richColors />
+      <LoadingBackdrop />
     </ThemeProvider>
   );
 };
