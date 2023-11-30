@@ -1,5 +1,6 @@
-// import people from '@/data/women.json';
 import { useEffect } from 'react';
+
+import { Alert } from '@mui/material';
 
 import people from '@/data/queen.json';
 
@@ -14,11 +15,10 @@ const SurveyV2 = () => {
   return (
     <>
       <Title title="Reina de la Cena 2023" hideDivider />
-      <OfficesList
-        data={people}
-        message="Acá podes votar una compañera"
-        view={2}
-      />
+      <Alert severity="info" variant="outlined" sx={{ mt: 2 }}>
+        Acá podes votar una compañera
+      </Alert>
+      <OfficesList data={people} view={2} />
     </>
   );
 };

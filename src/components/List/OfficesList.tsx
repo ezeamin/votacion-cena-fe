@@ -18,7 +18,7 @@ import { OfficesListProps } from '../interface';
 import PersonItem from './PersonItem';
 
 const OfficesList = (props: OfficesListProps) => {
-  const { data, message, view } = props;
+  const { data, view } = props;
 
   const navigate = useNavigate();
 
@@ -69,9 +69,7 @@ const OfficesList = (props: OfficesListProps) => {
 
   return (
     <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
-      <Alert severity="info" variant="outlined">
-        {message}
-      </Alert>
+      
       <FormControl sx={{ width: '100%', my: 2, mb: 5 }}>
         <RadioGroup
           aria-labelledby="demo-form-control-label-placement"

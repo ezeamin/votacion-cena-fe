@@ -12,7 +12,6 @@ export interface OfficesListProps {
   data: {
     [key: string]: string[];
   };
-  message: string;
   view: number;
 }
 
