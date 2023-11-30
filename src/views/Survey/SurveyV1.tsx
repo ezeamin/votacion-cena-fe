@@ -9,7 +9,7 @@ const SurveyV1 = () => (
     <Title title="Rey de la Cena 2023" />
     <OfficesList
       data={people}
-      message="Acá poder votar por un compañero"
+      message="Acá podes votar por un compañero"
       view={1}
     />
   </>

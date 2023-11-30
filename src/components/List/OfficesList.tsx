@@ -50,7 +50,7 @@ const OfficesList = (props: OfficesListProps) => {
     e.preventDefault();
 
     if (!selectedPerson) {
-      toast.error('Error: debe seleccionar un compañoro/a antes de continuar.');
+      toast.error('Error: debe seleccionar un compañero/a antes de continuar.');
       return;
     }
 
@@ -70,7 +70,7 @@ const OfficesList = (props: OfficesListProps) => {
       toast.error(msg);
     });
     onSocket('success', () => {
-      navigate('/preview-results');
+      navigate('/finish-survey');
     });
   }, [onSocket]);
 

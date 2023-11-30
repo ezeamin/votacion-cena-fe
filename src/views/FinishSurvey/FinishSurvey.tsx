@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { Button, Stack, Typography } from '@mui/material';
 
-const PreviewResults = () => {
+const FinishSurvey = () => {
   return (
     <Stack
       flexDirection="column"
@@ -27,4 +27,4 @@ const PreviewResults = () => {
   );
 };
 
-export default PreviewResults;
+export default FinishSurvey;
