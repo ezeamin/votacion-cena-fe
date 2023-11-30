@@ -8,7 +8,7 @@ interface SocketStore {
   socket: Socket;
   setSocket: (socket: Socket) => void;
   emitSocket: (event: string, data: unknown) => void;
-  onSocket: (event: string, callback: (msg: string) => void) => void;
+  onSocket: (event: string, callback: (data: unknown) => void) => void;
 }
 
 const token = localStorage.getItem('token') || crypto.randomUUID();

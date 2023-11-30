@@ -8,7 +8,7 @@ const Title = (props: TitleProps) => {
   return (
     <>
       <Typography
-        sx={{ mb: 1 }}
+        sx={{ my: 1 }}
         variant="h4"
         component="h1"
         textAlign={centered ? 'center' : 'start'}

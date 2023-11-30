@@ -18,3 +18,20 @@ export interface OfficesListProps {
 export interface PersonItemProps {
   person: string;
 }
+
+export interface Vote {
+  king: string;
+  queen: string;
+}
+
+export interface NumberOfVotesProps {
+  data: Vote[];
+}
+
+export interface WinnersProps {
+  data: Vote[];
+}
+
+export interface GraphProps {
+  data: Vote[];
+}
