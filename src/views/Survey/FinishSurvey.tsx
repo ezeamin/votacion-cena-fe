@@ -15,10 +15,10 @@ const FinishSurvey = () => {
 
       <Button
         color="violet"
-        component={Link}
+        component="a"
         size="large"
         sx={{ color: '#fff', textDecoration: 'none' }}
-        to="/results"
+        href="/results"
         variant="contained"
       >
         VER LOS RESULTADOS

@@ -21,8 +21,8 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
         backgroundColor: '#7388A9',
         borderRadius: '1rem',
         padding: '2.5rem 1rem',
-        height: '150px',
-        maxHeight: '150px',
+        height: '125px',
+        maxHeight: '125px',
       }}
     >
       <Typography variant="h5" component="h2" display="inline">

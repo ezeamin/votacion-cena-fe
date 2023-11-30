@@ -1,6 +1,6 @@
 import { Vote } from '@/components/interface';
 
-export const findMostFrequentValue = (arr: string[]): string | undefined => {
+export const findMostFrequentValue = (arr: string[]): string => {
   // Create a map to store the count of each string
   const countMap = new Map<string, number>();
 
@@ -20,7 +20,7 @@ export const findMostFrequentValue = (arr: string[]): string | undefined => {
     return 'EMPATE';
   }
 
-  return mostFrequentValues.length > 0 ? mostFrequentValues[0] : undefined;
+  return mostFrequentValues.length > 0 ? mostFrequentValues[0] : 'N/A';
 };
 
 export const countFrequency = (

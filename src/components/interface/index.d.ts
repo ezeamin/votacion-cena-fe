@@ -28,10 +28,11 @@ export interface NumberOfVotesProps {
   data: Vote[];
 }
 
-export interface WinnersProps {
+export interface GraphProps {
   data: Vote[];
 }
 
-export interface GraphProps {
-  data: Vote[];
+export interface WinnerProps {
+  title: string;
+  winner: string;
 }
