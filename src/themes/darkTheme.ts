@@ -48,7 +48,7 @@ const darkTheme = {
   violet: {
     main: '#a652ca',
     dark: '#7e32ad',
-    contrastText: '#fff',
+    contrastText: '#ffffff',
   },
   gray: {
     main: '#9e9e9e',

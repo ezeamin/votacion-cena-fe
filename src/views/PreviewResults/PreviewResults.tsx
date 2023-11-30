@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 const PreviewResults = () => {
   return (
@@ -8,9 +8,18 @@ const PreviewResults = () => {
       <Typography align="center" component="h2" variant="h4">
         Su voto fue registrado correctamente !
       </Typography>
-      <Typography align="center" component="h2" mt={3} variant="h6">
-        <Link to="/results">VER LOS RESULTADOS</Link>
-      </Typography>
+      <Box textAlign="center">
+        <Button
+          color="violet"
+          size="large"
+          sx={{ mt: '25%' }}
+          variant="contained"
+        >
+          <Link style={{ color: '#fff', textDecoration: 'none' }} to="/results">
+            VER LOS RESULTADOS
+          </Link>
+        </Button>
+      </Box>
     </Box>
   );
 };
