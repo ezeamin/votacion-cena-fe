@@ -58,18 +58,22 @@ const OfficesList = (props: OfficesListProps) => {
   useEffect(() => {
     onSocket('error', (msg) => {
       setIsLoading(false);
-      if (typeof msg === 'string') toast.error(msg);
-      else if (msg instanceof Error) toast.error(msg.message);
+      if (typeof msg === 'string') {
+        if (msg.includes('votaste')) {
+          localStorage.removeItem('king');
+          navigate('/duplicated');
+        } else toast.error(msg);
+      } else if (msg instanceof Error) toast.error(msg.message);
     });
     onSocket('success', () => {
       setIsLoading(false);
+      localStorage.removeItem('king');
       navigate('/finish-survey');
     });
   }, [onSocket]);
 
   return (
     <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
-      
       <FormControl sx={{ width: '100%', my: 2, mb: 5 }}>
         <RadioGroup
           aria-labelledby="demo-form-control-label-placement"
