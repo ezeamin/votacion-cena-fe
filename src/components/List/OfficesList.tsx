@@ -10,6 +10,7 @@ import {
   RadioGroup,
 } from '@mui/material';
 
+import { useLoading } from '@/store/useLoading';
 import { useSocket } from '@/store/useSocket';
 import { toast } from 'sonner';
 
@@ -17,30 +18,18 @@ import { OfficesListProps } from '../interface';
 import PersonItem from './PersonItem';
 
 const OfficesList = (props: OfficesListProps) => {
-  const { data, message, view } = props;
+  const { data, view } = props;
 
   const navigate = useNavigate();
 
   const { emitSocket, onSocket } = useSocket();
+  const { setIsLoading } = useLoading();
 
   const [selectedPerson, setSelectedPerson] = useState();
 
   const elements = Object.keys(data).map((key) => {
     return data[key];
   });
-
-  // const orderedElements = elements[0].sort((a, b) => {
-  //   const firstNameA = a.split(' ')[0].toUpperCase();
-  //   const firstNameB = b.split(' ')[0].toUpperCase();
-
-  //   if (firstNameA < firstNameB) {
-  //     return -1;
-  //   }
-  //   if (firstNameA > firstNameB) {
-  //     return 1;
-  //   }
-  //   return 0;
-  // });
 
   const handleChange = (e: React.FormEvent<HTMLFormElement>): void => {
     setSelectedPerson(e.target.value);
@@ -58,6 +47,7 @@ const OfficesList = (props: OfficesListProps) => {
       localStorage.setItem('king', selectedPerson);
       navigate('/step-2');
     } else {
+      setIsLoading(true);
       emitSocket('new vote', {
         king: localStorage.getItem('king'),
         queen: selectedPerson,
@@ -67,19 +57,24 @@ const OfficesList = (props: OfficesListProps) => {
 
   useEffect(() => {
     onSocket('error', (msg) => {
-      toast.error(msg);
+      setIsLoading(false);
+      if (typeof msg === 'string') {
+        if (msg.includes('votaste')) {
+          localStorage.removeItem('king');
+          navigate('/duplicated');
+        } else toast.error(msg);
+      } else if (msg instanceof Error) toast.error(msg.message);
     });
     onSocket('success', () => {
+      setIsLoading(false);
+      localStorage.removeItem('king');
       navigate('/finish-survey');
     });
   }, [onSocket]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <Alert severity="info" variant="outlined">
-        {message}
-      </Alert>
-      <FormControl sx={{ width: '100%', my: 2 }}>
+    <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
+      <FormControl sx={{ width: '100%', my: 2, mb: 5 }}>
         <RadioGroup
           aria-labelledby="demo-form-control-label-placement"
           defaultValue="top"
@@ -101,9 +96,24 @@ const OfficesList = (props: OfficesListProps) => {
         </RadioGroup>
       </FormControl>
 
-      <Button fullWidth type="submit" variant="contained">
-        {view === 1 ? 'Siguiente paso' : 'Finalizar votación'}
-      </Button>
+      <Box
+        sx={{
+          width: '100%',
+          position: 'fixed',
+          bottom: '0',
+          py: '1rem',
+          backgroundColor: '#33333C',
+        }}
+      >
+        <Button
+          fullWidth
+          type="submit"
+          variant="contained"
+          disabled={!selectedPerson}
+        >
+          {view === 1 ? 'Siguiente paso' : 'Finalizar votación'}
+        </Button>
+      </Box>
     </form>
   );
 };

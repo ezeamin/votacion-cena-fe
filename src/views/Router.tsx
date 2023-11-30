@@ -2,8 +2,9 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Container } from '@mui/material';
 
-import FinishSurvey from './FinishSurvey/FinishSurvey';
 import ResultsV1 from './Results/ResultsV1';
+import Duplicated from './Survey/Duplicated';
+import FinishSurvey from './Survey/FinishSurvey';
 import SurveyV1 from './Survey/SurveyV1';
 import SurveyV2 from './Survey/SurveyV2';
 
@@ -16,6 +17,7 @@ const Router = () => {
             <Route path="/" element={<SurveyV1 />} />
             <Route path="/step-2" element={<SurveyV2 />} />
             <Route path="/finish-survey" element={<FinishSurvey />} />
+            <Route path="/duplicated" element={<Duplicated />} />
             <Route path="/results" element={<ResultsV1 />} />
           </Routes>
         </main>

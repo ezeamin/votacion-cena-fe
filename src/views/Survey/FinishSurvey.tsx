@@ -9,7 +9,7 @@ const FinishSurvey = () => {
       justifyContent="space-evenly"
       sx={{ height: '100vh' }}
     >
-      <Typography component="h2" sx={{ mx: 6 }} textAlign="center" variant="h4">
+      <Typography component="h2" sx={{ mx: 2 }} textAlign="center" variant="h4">
         Su voto fue registrado correctamente !
       </Typography>
 

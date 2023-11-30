@@ -8,10 +8,10 @@ interface SocketStore {
   socket: Socket;
   setSocket: (socket: Socket) => void;
   emitSocket: (event: string, data: unknown) => void;
-  onSocket: (event: string, callback: (msg: string) => void) => void;
+  onSocket: (event: string, callback: (data: unknown) => void) => void;
 }
 
-const token = localStorage.getItem('token') || crypto.randomUUID();
+const token = localStorage.getItem('token') || window.crypto.randomUUID();
 localStorage.setItem('token', token);
 
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
