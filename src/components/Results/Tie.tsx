@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { TieProps } from '../interface';
 
 const Tie = (props: TieProps) => {
-  const { list, type } = props;
+  const { list, type, canHandleTie } = props;
 
   const { emitSocket } = useSocket();
 
@@ -28,7 +28,6 @@ const Tie = (props: TieProps) => {
         mostVoted[Math.floor(Math.random() * mostVoted.length)];
 
       emitSocket('new random winner', { type, person: randomWinner });
-      alert(randomWinner);
     }
   };
 
@@ -50,9 +49,11 @@ const Tie = (props: TieProps) => {
         <Typography variant="h5" component="h2" fontWeight="bold">
           Hubo un empate de {type === 'king' ? 'REYES' : 'REINAS'}!
         </Typography>
-        <Button variant="contained" type="button" onClick={handleClick}>
-          Sortear 🎲
-        </Button>
+        {canHandleTie && (
+          <Button variant="contained" type="button" onClick={handleClick}>
+            Sortear 🎲
+          </Button>
+        )}
       </Stack>
       <Stack>
         <Typography variant="h6" component="h2">

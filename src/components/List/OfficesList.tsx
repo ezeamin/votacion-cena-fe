@@ -41,6 +41,12 @@ const OfficesList = (props: OfficesListProps) => {
       navigate('/step-2');
     } else {
       setIsLoading(true);
+      // create timeout and after 5 seconds, set is loading to false
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 5000);
+
       emitSocket('new vote', {
         king: localStorage.getItem('king'),
         queen: selectedPerson,

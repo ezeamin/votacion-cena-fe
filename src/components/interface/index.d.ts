@@ -41,4 +41,5 @@ export interface WinnerProps {
 export interface TieProps {
   list: string[];
   type: 'king' | 'queen';
+  canHandleTie: boolean;
 }

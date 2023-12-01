@@ -19,6 +19,7 @@ const ResultsV1 = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<Vote[]>([]);
+  const [canHandleTie, setCanHandleTie] = useState(false);
 
   useEffect(() => {
     onSocket('votes', (apiData) => {
@@ -32,7 +33,9 @@ const ResultsV1 = () => {
 
       setIsLoading(false);
     });
-  }, []);
+    onSocket('timer', () => setCanHandleTie(false));
+    onSocket('no timer', () => setCanHandleTie(true));
+  }, [onSocket]);
 
   const kingsList: string[] = useMemo(
     () => data.reduce<string[]>((prev, person) => [...prev, person.king], []),
@@ -88,12 +91,12 @@ const ResultsV1 = () => {
         </Grid>
         {mostVotedKing === 'EMPATE' && (
           <Grid item xs={12}>
-            <Tie list={kingsList} type="king" />
+            <Tie list={kingsList} type="king" canHandleTie={canHandleTie} />
           </Grid>
         )}
         {mostVotedQueen === 'EMPATE' && (
           <Grid item xs={12}>
-            <Tie list={queensList} type="queen" />
+            <Tie list={queensList} type="queen" canHandleTie={canHandleTie} />
           </Grid>
         )}
       </Grid>
