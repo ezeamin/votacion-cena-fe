@@ -52,8 +52,8 @@ const OfficesList = (props: OfficesListProps) => {
       setTimeout(() => {
         setIsLoading(false);
         localStorage.removeItem('king');
-        navigate('/finish-survey');
-      }, 5000);
+        if (window.location.pathname === '/step-2') navigate('/finish-survey');
+      }, 3000);
 
       emitSocket('new vote', {
         king: localStorage.getItem('king'),
