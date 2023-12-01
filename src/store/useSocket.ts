@@ -7,7 +7,6 @@ import { create } from 'zustand';
 
 interface SocketStore {
   socket: Socket;
-  setSocket: (socket: Socket) => void;
   emitSocket: (event: string, data: unknown) => void;
   onSocket: (event: string, callback: (data: unknown) => void) => void;
 }
@@ -24,7 +23,6 @@ const socket = io(SOCKET_URL, {
 
 export const useSocket = create<SocketStore>((set) => ({
   socket,
-  setSocket: (_socket) => set({ socket: _socket }),
   emitSocket: (event, data) => socket.emit(event, data),
   onSocket: (event, callback) => socket.on(event, callback),
 }));

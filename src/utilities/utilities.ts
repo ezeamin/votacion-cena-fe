@@ -6,7 +6,9 @@ export const findMostFrequentValue = (arr: string[]): string => {
 
   // Iterate through the array and count occurrences
   arr.forEach((value) => {
-    countMap.set(value, (countMap.get(value) || 0) + 1);
+    if (value !== undefined) {
+      countMap.set(value, (countMap.get(value) || 0) + 1);
+    }
   });
 
   // Find the string with the maximum count
