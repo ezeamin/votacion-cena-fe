@@ -69,10 +69,12 @@ const OfficesList = (props: OfficesListProps) => {
         if (msg.includes('votaste')) {
           localStorage.removeItem('king');
           navigate('/duplicated');
-        } else toast.error(msg);
+          return;
+        }
+        toast.error(msg);
       } else if (msg instanceof Error) toast.error(msg.message);
 
-      console.log(msg);
+      console.log('MENSAJE', msg);
     });
     onSocket('success', () => {
       setIsLoading(false);
