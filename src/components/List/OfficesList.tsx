@@ -40,13 +40,19 @@ const OfficesList = (props: OfficesListProps) => {
       localStorage.setItem('king', selectedPerson);
       navigate('/step-2');
     } else {
+      if (!localStorage.getItem('king')) {
+        toast.error('Error: debe seleccionar un rey antes de continuar.');
+        navigate('/step-1');
+        return;
+      }
+
       setIsLoading(true);
 
       // In case it doesn't -> Can happen
       setTimeout(() => {
         setIsLoading(false);
         localStorage.removeItem('king');
-        navigate('/duplicated');
+        navigate('/finish-survey');
       }, 5000);
 
       emitSocket('new vote', {
