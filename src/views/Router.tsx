@@ -13,7 +13,7 @@ import Timeout from './Survey/Timeout';
 const Router = () => {
   return (
     <BrowserRouter>
-      <Container className="content" sx={{ py: 2 }}>
+      <Container sx={{ py: 2 }}>
         <main>
           <Routes>
             <Route path="/" element={<SurveyV1 />} />

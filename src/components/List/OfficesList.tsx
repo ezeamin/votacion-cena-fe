@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 
 import { OfficesListProps } from '../interface';
 import PersonItem from './PersonItem';
+import { List } from './styled';
 
 const OfficesList = (props: OfficesListProps) => {
   const { data, view } = props;
@@ -77,7 +78,7 @@ const OfficesList = (props: OfficesListProps) => {
 
   return (
     <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
-      <FormControl sx={{ width: '100%', my: 2, mb: 5 }}>
+      <FormControl sx={{ width: '100%', my: 2 }}>
         <RadioGroup
           aria-labelledby="candidates"
           defaultValue="top"
@@ -89,11 +90,11 @@ const OfficesList = (props: OfficesListProps) => {
               <Divider>
                 {Object.keys(data)[index].toUpperCase() || null}
               </Divider>
-              <Box component="ul" sx={{ mb: 3 }}>
+              <List>
                 {element.map((person) => (
                   <PersonItem person={person} key={person} />
                 ))}
-              </Box>
+              </List>
             </Fragment>
           ))}
         </RadioGroup>
@@ -102,16 +103,17 @@ const OfficesList = (props: OfficesListProps) => {
       <Box
         sx={{
           width: '100%',
-          position: 'fixed',
+          position: 'absolute',
           bottom: '0',
           py: '1rem',
           backgroundColor: '#33333C',
         }}
       >
         <Button
-          fullWidth
           type="submit"
           variant="contained"
+          size="large"
+          fullWidth
           disabled={!selectedPerson}
         >
           {view === 1 ? 'Siguiente paso' : 'Finalizar votación'}

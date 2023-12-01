@@ -12,21 +12,6 @@ html {
   overflow-x: hidden;
 }
 
-.content {
-  display: flex !important;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
-  flex: 1 0 auto;
-}
-
-footer {
-  flex-shrink: 0;
-  padding: 1rem 0 0.5rem 0;
-}
-
 /* Animation */
 
 .animate-in-bottom {
