@@ -23,6 +23,26 @@ export const findMostFrequentValue = (arr: string[]): string => {
   return mostFrequentValues.length > 0 ? mostFrequentValues[0] : 'N/A';
 };
 
+export const findMostFrequentValues = (arr: string[]): string[] => {
+  // Create a map to store the count of each string
+  const countMap = new Map<string, number>();
+
+  // Iterate through the array and count occurrences
+  arr.forEach((value) => {
+    countMap.set(value, (countMap.get(value) || 0) + 1);
+  });
+
+  // Find the maximum count
+  const maxCount = Math.max(...countMap.values());
+
+  // Filter values with the maximum count
+  const mostFrequentValues = Array.from(countMap.entries())
+    .filter(([, count]) => count === maxCount)
+    .map(([value]) => value);
+
+  return mostFrequentValues;
+};
+
 export const countFrequency = (
   data: Vote[],
   field: 'king' | 'queen'
@@ -53,5 +73,5 @@ export const countFrequency = (
     count,
   ]);
 
-  return result;
+  return result.filter(([value]) => value !== undefined);
 };

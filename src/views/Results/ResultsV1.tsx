@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 
 import Graph from '@/components/Results/Graph';
 import NumberOfVotes from '@/components/Results/NumberOfVotes';
+import Tie from '@/components/Results/Tie';
 import Winner from '@/components/Results/Winner';
 import Title from '@/components/Title';
 
@@ -85,6 +86,16 @@ const ResultsV1 = () => {
         <Grid item xs={12}>
           <Graph data={data} />
         </Grid>
+        {mostVotedKing === 'EMPATE' && (
+          <Grid item xs={12}>
+            <Tie list={kingsList} type="king" />
+          </Grid>
+        )}
+        {mostVotedQueen === 'EMPATE' && (
+          <Grid item xs={12}>
+            <Tie list={queensList} type="queen" />
+          </Grid>
+        )}
       </Grid>
     </>
   );
