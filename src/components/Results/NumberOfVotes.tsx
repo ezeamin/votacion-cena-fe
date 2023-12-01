@@ -10,7 +10,6 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
 
   const amountOfPeople = men.candidatos.length + women.candidatas.length;
 
-  console.log(data)
   const votedCount = data.filter((item) => item.shouldCount).length;
 
   return (
