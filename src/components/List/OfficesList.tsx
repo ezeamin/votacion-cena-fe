@@ -71,6 +71,8 @@ const OfficesList = (props: OfficesListProps) => {
           navigate('/duplicated');
         } else toast.error(msg);
       } else if (msg instanceof Error) toast.error(msg.message);
+
+      console.log(msg);
     });
     onSocket('success', () => {
       setIsLoading(false);
