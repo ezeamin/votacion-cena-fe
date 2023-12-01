@@ -28,6 +28,7 @@ const Tie = (props: TieProps) => {
         mostVoted[Math.floor(Math.random() * mostVoted.length)];
 
       emitSocket('new random winner', { type, person: randomWinner });
+      window.scrollTo(0, 0);
     }
   };
 

@@ -48,13 +48,6 @@ const OfficesList = (props: OfficesListProps) => {
 
       setIsLoading(true);
 
-      // In case it doesn't -> Can happen
-      // setTimeout(() => {
-      //   setIsLoading(false);
-      //   localStorage.removeItem('king');
-      //   if (window.location.pathname === '/step-2') navigate('/finish-survey');
-      // }, 3000);
-
       emitSocket('new vote', {
         king: localStorage.getItem('king'),
         queen: selectedPerson,
@@ -73,21 +66,20 @@ const OfficesList = (props: OfficesListProps) => {
         }
         toast.error(msg);
       } else if (msg instanceof Error) toast.error(msg.message);
-
-      console.log('MENSAJE', msg);
+      else toast.error('Error: no se pudo guardar la votación.');
     });
     onSocket('success', () => {
       setIsLoading(false);
       localStorage.removeItem('king');
       navigate('/finish-survey');
     });
-  }, [onSocket]);
+  }, [onSocket, navigate, setIsLoading, toast]);
 
   return (
     <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
       <FormControl sx={{ width: '100%', my: 2, mb: 5 }}>
         <RadioGroup
-          aria-labelledby="demo-form-control-label-placement"
+          aria-labelledby="candidates"
           defaultValue="top"
           name="position"
           onChange={handleChange}
