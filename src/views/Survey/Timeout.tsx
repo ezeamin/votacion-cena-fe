@@ -1,6 +1,6 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-const Duplicated = () => {
+const Timeout = () => {
   return (
     <Stack
       flexDirection="column"
@@ -14,10 +14,10 @@ const Duplicated = () => {
           variant="h4"
           sx={{ mb: 2 }}
         >
-          Un voto a tu nombre ya fue registrado! 👮🏼
+          ¡Tiempo terminado! 😳⏱️
         </Typography>
         <Typography component="p" variant="body1" textAlign="center">
-          Te invitamos a revisar los resultados en tiempo real
+          Te invitamos a revisar los resultados
         </Typography>
       </Box>
 
@@ -33,5 +33,4 @@ const Duplicated = () => {
     </Stack>
   );
 };
-
-export default Duplicated;
+export default Timeout;

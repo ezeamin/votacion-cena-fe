@@ -10,7 +10,7 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
 
   const amountOfPeople = men.candidatos.length + women.candidatas.length;
 
-  const votedCount = data.length;
+  const votedCount = data.filter((item) => item.shouldCount).length;
 
   return (
     <Stack
@@ -18,11 +18,11 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
       justifyContent="space-between"
       alignItems="center"
       sx={{
-        backgroundColor: '#7388A9',
+        background: 'linear-gradient(90deg, #4b6cb7 0%, #182848 100%);',
         borderRadius: '1rem',
         padding: '2.5rem 1rem',
-        height: '150px',
-        maxHeight: '150px',
+        height: '125px',
+        maxHeight: '125px',
       }}
     >
       <Typography variant="h5" component="h2" display="inline">

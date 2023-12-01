@@ -22,16 +22,24 @@ export interface PersonItemProps {
 export interface Vote {
   king: string;
   queen: string;
+  shouldCount: boolean;
 }
 
 export interface NumberOfVotesProps {
   data: Vote[];
 }
 
-export interface WinnersProps {
+export interface GraphProps {
   data: Vote[];
 }
 
-export interface GraphProps {
-  data: Vote[];
+export interface WinnerProps {
+  title: string;
+  winner: string;
+}
+
+export interface TieProps {
+  list: string[];
+  type: 'king' | 'queen';
+  canHandleTie: boolean;
 }

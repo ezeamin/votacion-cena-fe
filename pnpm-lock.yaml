@@ -35,6 +35,9 @@ dependencies:
   sonner:
     specifier: ^1.2.3
     version: 1.2.3(react-dom@18.2.0)(react@18.2.0)
+  sweetalert2:
+    specifier: ^11.10.1
+    version: 11.10.1
   zustand:
     specifier: ^4.4.6
     version: 4.4.6(@types/react@18.2.38)(react@18.2.0)
@@ -4199,6 +4202,10 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /sweetalert2@11.10.1:
+    resolution: {integrity: sha512-qu145oBuFfjYr5yZW9OSdG6YmRxDf8CnkgT/sXMfrXGe+asFy2imC2vlaLQ/L/naZ/JZna1MPAY56G4qYM0VUQ==}
+    dev: false
 
   /synckit@0.8.5:
     resolution: {integrity: sha512-L1dapNV6vu2s/4Sputv8xGsCdAVlb5nRDMFU/E27D44l5U6cw1g0dGd45uLc+OXjNMmF4ntiMdCimzcjFKQI8Q==}

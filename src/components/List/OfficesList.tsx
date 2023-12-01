@@ -1,14 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  Alert,
-  Box,
-  Button,
-  Divider,
-  FormControl,
-  RadioGroup,
-} from '@mui/material';
+import { Box, Button, Divider, FormControl, RadioGroup } from '@mui/material';
 
 import { useLoading } from '@/store/useLoading';
 import { useSocket } from '@/store/useSocket';
@@ -48,6 +41,12 @@ const OfficesList = (props: OfficesListProps) => {
       navigate('/step-2');
     } else {
       setIsLoading(true);
+      // create timeout and after 5 seconds, set is loading to false
+
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 5000);
+
       emitSocket('new vote', {
         king: localStorage.getItem('king'),
         queen: selectedPerson,
