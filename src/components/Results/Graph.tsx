@@ -25,8 +25,6 @@ const Graph = (props: GraphProps) => {
   const queenResults = useMemo(() => countFrequency(data, 'queen'), [data]);
   queenResults.unshift(['Candidato', 'Votos']);
 
-  console.log('hola');
-
   return (
     <Grid container spacing={1}>
       <Grid item xs={12} md={6} sx={{ height: '100%' }}>

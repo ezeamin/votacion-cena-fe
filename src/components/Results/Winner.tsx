@@ -10,7 +10,7 @@ const Winner = (props: WinnerProps) => {
       alignItems="center"
       justifyContent="center"
       sx={{
-        backgroundColor: '#7F947D',
+        background: 'linear-gradient(to right, #0f0c29, #302b63, #24243e);',
         borderRadius: '1rem',
         padding: '2.5rem 1rem',
         height: '150px',

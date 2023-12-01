@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { Button, Stack, Typography } from '@mui/material';
 
 const FinishSurvey = () => {
@@ -14,7 +12,6 @@ const FinishSurvey = () => {
       </Typography>
 
       <Button
-        color="violet"
         component="a"
         size="large"
         sx={{ color: '#fff', textDecoration: 'none' }}

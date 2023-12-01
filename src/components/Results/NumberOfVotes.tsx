@@ -18,7 +18,7 @@ const NumberOfVotes = (props: NumberOfVotesProps) => {
       justifyContent="space-between"
       alignItems="center"
       sx={{
-        backgroundColor: '#7388A9',
+        background: 'linear-gradient(90deg, #4b6cb7 0%, #182848 100%);',
         borderRadius: '1rem',
         padding: '2.5rem 1rem',
         height: '125px',
