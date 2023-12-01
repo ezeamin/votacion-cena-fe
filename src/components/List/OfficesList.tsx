@@ -41,10 +41,12 @@ const OfficesList = (props: OfficesListProps) => {
       navigate('/step-2');
     } else {
       setIsLoading(true);
-      // create timeout and after 5 seconds, set is loading to false
 
+      // In case it doesn't -> Can happen
       setTimeout(() => {
         setIsLoading(false);
+        localStorage.removeItem('king');
+        navigate('/duplicated');
       }, 5000);
 
       emitSocket('new vote', {
