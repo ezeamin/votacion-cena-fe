@@ -8,7 +8,12 @@ const Title = (props: TitleProps) => {
 
   return (
     <>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        gap={1}
+      >
         <Typography
           sx={{ my: 1 }}
           variant="h4"
@@ -17,7 +22,7 @@ const Title = (props: TitleProps) => {
         >
           {title}
         </Typography>
-        <Timer />
+        <Timer textAlign="right" />
       </Stack>
       {!hideDivider && <Divider />}
     </>

@@ -43,3 +43,7 @@ export interface TieProps {
   type: 'king' | 'queen';
   canHandleTie: boolean;
 }
+
+export interface TimerProps {
+  textAlign: 'left' | 'center' | 'right';
+}
