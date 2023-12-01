@@ -3,8 +3,13 @@ import { useEffect, useState } from 'react';
 import { Typography } from '@mui/material';
 
 import { useSocket } from '@/store/useSocket';
+import { toast } from 'sonner';
 
-const Timer = () => {
+import { TimerProps } from '../interface';
+
+const Timer = (props: TimerProps) => {
+  const { textAlign } = props;
+
   const { onSocket } = useSocket();
 
   const [timer, setTimer] = useState('');
@@ -48,13 +53,18 @@ const Timer = () => {
       }
     });
 
+    onSocket('timer finished', () => {
+      toast.info('El contador ha finalizado!');
+      setTimer('');
+    });
+
     return () => {
       clearInterval(intervalId);
     };
   }, [onSocket, setTimer]);
 
   return (
-    <Typography variant="body1" component="p" textAlign="right">
+    <Typography variant="body1" component="p" textAlign={textAlign}>
       {timer}
     </Typography>
   );

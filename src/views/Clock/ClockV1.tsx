@@ -6,16 +6,20 @@ import { useLoading } from '@/store/useLoading';
 import { useSocket } from '@/store/useSocket';
 import { toast } from 'sonner';
 
+import Timer from '@/components/Results/Timer';
+
 const ClockV1 = () => {
   const { emitSocket, onSocket } = useSocket();
   const { setIsLoading } = useLoading();
 
   const [timer, setTimer] = useState(0);
   const [hasStartedClock, setHasStartedClock] = useState(false);
+  const [clockRunning, setClockRunning] = useState(false);
 
   useEffect(() => {
     onSocket('timer', (data) => {
       setIsLoading(false);
+      setClockRunning(true);
 
       if (hasStartedClock) {
         toast.success('El reloj se ha iniciado');
@@ -31,6 +35,12 @@ const ClockV1 = () => {
       if (error instanceof Error) toast.error(error.message);
       else if (typeof error === 'string') toast.error(error);
     });
+    onSocket('no timer', () => {
+      setHasStartedClock(false);
+      setClockRunning(false);
+      setIsLoading(false);
+      setTimer(0);
+    });
   }, []);
 
   const handleClick = () => {
@@ -39,6 +49,11 @@ const ClockV1 = () => {
       setHasStartedClock(true);
       emitSocket('start timer', {});
     }
+  };
+
+  const handleTerminate = () => {
+    setIsLoading(true);
+    emitSocket('stop timer', {});
   };
 
   return (
@@ -56,25 +71,30 @@ const ClockV1 = () => {
         >
           Iniciar reloj
         </Typography>
-        <Typography
-          component="p"
-          sx={{ mx: 2, mt: 2 }}
-          textAlign="center"
-          variant="body1"
-        >
-          {timer}
-        </Typography>
+        <Timer textAlign="center" />
       </div>
 
-      <Button
-        size="large"
-        sx={{ color: '#fff', textDecoration: 'none' }}
-        variant="contained"
-        onClick={handleClick}
-        disabled={timer !== 0}
-      >
-        Iniciar
-      </Button>
+      <Stack gap={2}>
+        <Button
+          size="large"
+          sx={{ color: '#fff', textDecoration: 'none' }}
+          variant="contained"
+          onClick={handleClick}
+          disabled={timer !== 0}
+        >
+          Iniciar
+        </Button>
+        <Button
+          color="error"
+          size="large"
+          sx={{ color: '#fff', textDecoration: 'none' }}
+          variant="contained"
+          onClick={handleTerminate}
+          disabled={!clockRunning}
+        >
+          Terminar
+        </Button>
+      </Stack>
     </Stack>
   );
 };
