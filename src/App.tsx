@@ -14,7 +14,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router />
-      <Toaster richColors position="top-center" />
+      <Toaster richColors position="top-center" visibleToasts={1} />
       <LoadingBackdrop />
     </ThemeProvider>
   );
