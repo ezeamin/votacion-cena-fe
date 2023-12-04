@@ -41,17 +41,18 @@ const OfficesList = (props: OfficesListProps) => {
       localStorage.setItem('king', selectedPerson);
       navigate('/step-2');
     } else {
-      if (!localStorage.getItem('king')) {
-        toast.error('Error: debe seleccionar un rey antes de continuar.');
-        navigate('/');
-        return;
-      }
+      // if (!localStorage.getItem('king')) {
+      //   toast.error('Error: debe seleccionar un rey antes de continuar.');
+      //   navigate('/');
+      //   return;
+      // }
 
       setIsLoading(true);
 
       emitSocket('new vote', {
-        king: localStorage.getItem('king'),
-        queen: selectedPerson,
+        // king: localStorage.getItem('king'),
+        // queen: selectedPerson,
+        picasso: selectedPerson,
       });
     }
   };

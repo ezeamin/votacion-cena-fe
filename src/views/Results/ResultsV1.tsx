@@ -37,22 +37,14 @@ const ResultsV1 = () => {
     onSocket('no timer', () => setCanHandleTie(true));
   }, [onSocket]);
 
-  const kingsList: string[] = useMemo(
-    () => data.reduce<string[]>((prev, person) => [...prev, person.king], []),
-    [data]
-  );
-  const queensList: string[] = useMemo(
-    () => data.reduce<string[]>((prev, person) => [...prev, person.queen], []),
+  const peopleList: string[] = useMemo(
+    () => data.reduce<string[]>((prev, person) => [...prev, person.person], []),
     [data]
   );
 
-  const mostVotedKing = useMemo(
-    () => findMostFrequentValue(kingsList),
-    [kingsList]
-  );
-  const mostVotedQueen = useMemo(
-    () => findMostFrequentValue(queensList),
-    [queensList]
+  const mostVoted = useMemo(
+    () => findMostFrequentValue(peopleList),
+    [peopleList]
   );
 
   if (isLoading) {
@@ -75,28 +67,20 @@ const ResultsV1 = () => {
 
   return (
     <>
-      <Title title="Resultados - Cena 2023" />
+      <Title title="Resultados - Señor Picasso" />
       <Grid container sx={{ mt: 3 }} spacing={1}>
         <Grid item xs={12}>
           <NumberOfVotes data={data} />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Winner title="Rey actual" winner={mostVotedKing} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Winner title="Reina actual" winner={mostVotedQueen} />
+        <Grid item xs={12}>
+          <Winner title="Picasso 2023" winner={mostVoted} />
         </Grid>
         <Grid item xs={12}>
           <Graph data={data} />
         </Grid>
-        {mostVotedKing === 'EMPATE' && (
+        {mostVoted === 'EMPATE' && (
           <Grid item xs={12}>
-            <Tie list={kingsList} type="king" canHandleTie={canHandleTie} />
-          </Grid>
-        )}
-        {mostVotedQueen === 'EMPATE' && (
-          <Grid item xs={12}>
-            <Tie list={queensList} type="queen" canHandleTie={canHandleTie} />
+            <Tie list={peopleList} canHandleTie={canHandleTie} />
           </Grid>
         )}
       </Grid>

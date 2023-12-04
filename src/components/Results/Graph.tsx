@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Chart } from 'react-google-charts';
 
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { countFrequency } from '@/utilities/utilities';
 
@@ -11,7 +11,7 @@ const defaultOptions = {
   backgroundColor: '#b8b8b8',
   fontSize: 16,
   legend: {
-    position: 'bottom',
+    position: 'right',
     maxLines: 5,
   },
 };
@@ -19,43 +19,22 @@ const defaultOptions = {
 const Graph = (props: GraphProps) => {
   const { data } = props;
 
-  const kingResults = useMemo(() => countFrequency(data, 'king'), [data]);
-  kingResults.unshift(['Candidato', 'Votos']);
-
-  const queenResults = useMemo(() => countFrequency(data, 'queen'), [data]);
-  queenResults.unshift(['Candidato', 'Votos']);
+  const results = useMemo(() => countFrequency(data), [data]);
+  results.unshift(['Candidato', 'Votos']);
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={12} md={6} sx={{ height: '100%' }}>
-        <Box sx={{ borderRadius: '1rem', overflow: 'hidden' }}>
-          <Chart
-            chartType="PieChart"
-            data={kingResults}
-            options={{
-              title: 'Candidatos más votados - Reyes',
-              ...defaultOptions,
-            }}
-            width="100%"
-            height="500px"
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12} md={6}>
-        <Box sx={{ borderRadius: '1rem', overflow: 'hidden' }}>
-          <Chart
-            chartType="PieChart"
-            data={queenResults}
-            options={{
-              title: 'Candidatos más votados - Reinas',
-              ...defaultOptions,
-            }}
-            width="100%"
-            height="500px"
-          />
-        </Box>
-      </Grid>
-    </Grid>
+    <Box sx={{ borderRadius: '1rem', overflow: 'hidden' }}>
+      <Chart
+        chartType="PieChart"
+        data={results}
+        options={{
+          title: 'Candidatos más votados',
+          ...defaultOptions,
+        }}
+        width="100%"
+        height="500px"
+      />
+    </Box>
   );
 };
 

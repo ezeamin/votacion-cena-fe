@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { Alert } from '@mui/material';
 
-import people from '@/data/king.json';
+import people from '@/data/people.json';
 import { useSocket } from '@/store/useSocket';
 
 import OfficesList from '@/components/List/OfficesList';
@@ -23,11 +23,11 @@ const SurveyV1 = () => {
 
   return (
     <>
-      <Title title="Rey de la Cena 2023" hideDivider />
+      <Title title="Señor Picasso" hideDivider />
       <Alert severity="info" variant="outlined" sx={{ mt: 2 }}>
         Acá podes votar por un compañero
       </Alert>
-      <OfficesList data={people} view={1} />
+      <OfficesList data={people} view={2} />
     </>
   );
 };

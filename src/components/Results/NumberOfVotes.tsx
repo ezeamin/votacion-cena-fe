@@ -1,14 +1,13 @@
 import { Stack, Typography } from '@mui/material';
 
-import men from '@/data/king.json';
-import women from '@/data/queen.json';
+import people from '@/data/people.json';
 
 import { NumberOfVotesProps } from '../interface';
 
 const NumberOfVotes = (props: NumberOfVotesProps) => {
   const { data } = props;
 
-  const amountOfPeople = men.candidatos.length + women.candidatas.length;
+  const amountOfPeople = people.candidatos.length;
 
   const votedCount = data.filter((item) => item.shouldCount).length;
 

@@ -45,10 +45,9 @@ export const findMostFrequentValues = (arr: string[]): string[] => {
   return mostFrequentValues;
 };
 
-export const countFrequency = (
-  data: Vote[],
-  field: 'king' | 'queen'
-): [string, number | string][] => {
+export const countFrequency = (data: Vote[]): [string, number | string][] => {
+  const field = 'person';
+
   const frequencyMap: Map<string, number> = new Map();
 
   data.forEach((vote) => {

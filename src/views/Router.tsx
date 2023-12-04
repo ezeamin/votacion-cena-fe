@@ -7,7 +7,6 @@ import ResultsV1 from './Results/ResultsV1';
 import Duplicated from './Survey/Duplicated';
 import FinishSurvey from './Survey/FinishSurvey';
 import SurveyV1 from './Survey/SurveyV1';
-import SurveyV2 from './Survey/SurveyV2';
 import Timeout from './Survey/Timeout';
 
 const Router = () => {
@@ -17,7 +16,6 @@ const Router = () => {
         <main>
           <Routes>
             <Route path="/" element={<SurveyV1 />} />
-            <Route path="/step-2" element={<SurveyV2 />} />
             <Route path="/finish-survey" element={<FinishSurvey />} />
             <Route path="/duplicated" element={<Duplicated />} />
             <Route path="/results" element={<ResultsV1 />} />
